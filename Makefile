@@ -58,19 +58,19 @@ $(BUILD)/test_prog.o: $(SRC)/test_prog.c
 $(BUILD)/lbfgsb_wrapper.o: $(SRC)/lbfgsb_wrapper.c $(SRC)/lbfgsb_wrapper.h
 	$(CC) $(CFLAGS) -c $(SRC)/lbfgsb_wrapper.c -o $(BUILD)/lbfgsb_wrapper.o
 
-$(BUILD)/solver.o: $(SRC)/fortran_src/solver.f90
-	$(FC) $(FFLAGS) -c $(SRC)/fortran_src/solver.f90 -o $(BUILD)/solver.o
+$(BUILD)/solver.o: $(SRC)/main/fortran/solver.f90
+	$(FC) $(FFLAGS) -c $(SRC)/main/fortran/solver.f90 -o $(BUILD)/solver.o
 
-$(BUILD)/blas.o: $(SRC)/fortran_src/blas.f90
-	$(FC) $(FFLAGS) -c $(SRC)/fortran_src/blas.f90 -o $(BUILD)/blas.o
+$(BUILD)/blas.o: $(SRC)/main/fortran/blas.f90
+	$(FC) $(FFLAGS) -c $(SRC)/main/fortran/blas.f90 -o $(BUILD)/blas.o
 
-$(BUILD)/linpack.o: $(SRC)/fortran_src/linpack.f90
-	$(FC) $(FFLAGS) -c $(SRC)/fortran_src/linpack.f90 -o $(BUILD)/linpack.o
+$(BUILD)/linpack.o: $(SRC)/main/fortran/linpack.f90
+	$(FC) $(FFLAGS) -c $(SRC)/main/fortran/linpack.f90 -o $(BUILD)/linpack.o
 
-$(BUILD)/timer.o: $(SRC)/fortran_src/timer.f90
-	$(FC) $(FFLAGS) -c $(SRC)/fortran_src/timer.f90 -o $(BUILD)/timer.o
+$(BUILD)/timer.o: $(SRC)/main/fortran/timer.f90
+	$(FC) $(FFLAGS) -c $(SRC)/main/fortran/timer.f90 -o $(BUILD)/timer.o
 
 clean:
 	rm -rf $(BUILD) $(DIST) target
-	rm -f $(SRC)/fortran_src/iterate.dat
+	rm -f $(SRC)/main/fortran/iterate.dat
 	rm -f $(SRC)/lbfgsb_wrapper_wrap.c
