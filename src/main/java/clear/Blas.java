@@ -62,4 +62,23 @@ public final class Blas {
         System.arraycopy(xVector, 0, yVector, 0, number);
     }
 
+    /**
+     * Constant times a vector plus a vector.
+     * <p>
+     * Rewrote fortran {@code subroutine daxpy(n, da, dx, incx, dy, incy)}
+     * with conditions only for lbfgsb, without incx, incy because in all usage incx, incy == 1
+     *
+     * @param number
+     * @param alpha
+     * @param xVector
+     * @param yVector
+     */
+    private void axpy(final int number, final double alpha, final double[] xVector, final double[] yVector) {
+        if (number <= 0) return;
+
+        for (int i = 0; i < number; i++) {
+            yVector[i] = alpha * xVector[i] + yVector[i];
+        }
+    }
+
 }
