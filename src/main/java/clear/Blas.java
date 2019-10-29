@@ -5,17 +5,21 @@ public final class Blas {
     private Blas() {
     }
 
-    public static void scale(final int number, final double alpha, final double[] array, final int offset) {
-        if (number <= 0 || offset <= 0) return;
+    /**
+     * Scales {@code vector} by a {@code alpha}
+     * <p>
+     * Rewrote fortran subroutine  dscal(n, da, dx, incx) with conditions only for lbfgsb, without incx, because in all usage incx == 1
+     *
+     * @param number is number of elements in input vector.
+     * @param alpha  is specifies the scalar alpha.
+     * @param vector is vector.
+     */
+    public static void scale(final int number, final double alpha, final double[] vector) {
+        if (number <= 0) return;
 
-        if (offset == 1) {
-            for (int i = 0; i < number; i++) {
-                array[i] = alpha * array[i];
-            }
-        } else {
-            for (int i = 0; i < number * offset; i += offset) {
-                array[i] = alpha * array[i];
-            }
+        // TODO: 29.10.2019 Use Arrays.fill after check all usages in fortran code.
+        for (int i = 0; i < number; i++) {
+            vector[i] = alpha * vector[i];
         }
     }
 
