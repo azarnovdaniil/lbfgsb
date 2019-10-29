@@ -35,7 +35,7 @@ public final class Blas {
      * @param yVector is y vector
      * @return dot product of two vectors.
      */
-    private double dot(final int number, final double[] xVector, final double[] yVector) {
+    public static double dot(final int number, final double[] xVector, final double[] yVector) {
         if (number <= 0) {
             return 0.0;
         }
@@ -56,7 +56,7 @@ public final class Blas {
      * @param xVector is x vector
      * @param yVector is y vector
      */
-    private void copy(final int number, final double[] xVector, final double[] yVector) {
+    public static void copy(final int number, final double[] xVector, final double[] yVector) {
         if (number <= 0) return;
 
         System.arraycopy(xVector, 0, yVector, 0, number);
@@ -68,12 +68,12 @@ public final class Blas {
      * Rewrote fortran {@code subroutine daxpy(n, da, dx, incx, dy, incy)}
      * with conditions only for lbfgsb, without incx, incy because in all usage incx, incy == 1
      *
-     * @param number
-     * @param alpha
-     * @param xVector
-     * @param yVector
+     * @param number is number of elements in input vector.
+     * @param alpha  is specifies the scalar alpha.
+     * @param xVector is x vector
+     * @param yVector is y vector
      */
-    private void axpy(final int number, final double alpha, final double[] xVector, final double[] yVector) {
+    public static void axpy(final int number, final double alpha, final double[] xVector, final double[] yVector) {
         if (number <= 0) return;
 
         for (int i = 0; i < number; i++) {
