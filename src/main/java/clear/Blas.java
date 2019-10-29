@@ -8,7 +8,8 @@ public final class Blas {
     /**
      * Scales {@code vector} by a {@code alpha}
      * <p>
-     * Rewrote fortran subroutine  dscal(n, da, dx, incx) with conditions only for lbfgsb, without incx, because in all usage incx == 1
+     * Rewrote fortran {@code subroutine dscal(n, da, dx, incx)}
+     * with conditions only for lbfgsb, without incx, because in all usage incx == 1
      *
      * @param number is number of elements in input vector.
      * @param alpha  is specifies the scalar alpha.
@@ -23,13 +24,24 @@ public final class Blas {
         }
     }
 
-    private double dot(final int number, final double[] xArray, final int xOffset, final double[] yArray, final int yOffset) {
+    /**
+     * DDOT forms the dot product of two vectors.
+     * <p>
+     * Rewrote fortran {@code subroutine double precision function ddot(n, dx, incx, dy, incy)}
+     * with conditions only for lbfgsb, without incx, incy because in all usage incx, incy == 1
+     *
+     * @param number is number of elements in input vector(s)
+     * @param xVector is x vector
+     * @param yVector is y vector
+     * @return dot product of two vectors.
+     */
+    private double dot(final int number, final double[] xVector, final double[] yVector) {
         if (number <= 0) {
             return 0.0;
         }
         double result = 0.0;
         for (int i = 0; i <= number; i++) {
-            result += xArray[i + xOffset] * yArray[i + yOffset];
+            result += xVector[i] * yVector[i];
         }
         return result;
     }
