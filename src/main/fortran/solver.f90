@@ -972,8 +972,7 @@ subroutine mainlb(n, m, x, l, u, nbd, f, g, factr, pgtol, ws, wy, &
     dsave(16) = dtd
 
     1001 format (//, 'ITERATION ', i5)
-    1002 format&
-    (/, 'At iterate', i5, 4x, 'f= ',1p, d12.5, 4x, '|proj g|= ', 1p, d12.5)
+    1002 format(/, 'At iterate', i5, 4x, 'f= ',1p, d12.5, 4x, '|proj g|= ', 1p, d12.5)
     1003 format (2(1x, i4), 5x, '-', 5x, '-', 3x, '-', 5x, '-', 5x, '-', 8x, '-', 3x, &
             1p, 2(1x, d10.3))
     1004 format ('  ys=', 1p, e10.3, '  -gs=', 1p, e10.3, ' BFGS update SKIPPED')
@@ -2792,8 +2791,7 @@ subroutine prn2lb(n, x, f, g, iprint, itfile, iter, nfgv, nact, &
             iter, nfgv, nseg, nact, word, iback, stp, xstep, sbgnrm, f
 
     1004 format (/, a4, 1p, 6(1x, d11.4), /, (4x, 1p, 6(1x, d11.4)))
-    2001 format&
-    (/, 'At iterate', i5, 4x, 'f= ',1p, d12.5, 4x, '|proj g|= ', 1p, d12.5)
+    2001 format(/, 'At iterate', i5, 4x, 'f= ',1p, d12.5, 4x, '|proj g|= ', 1p, d12.5)
     3001 format(2(1x, i4), 2(1x, i5), 2x, a3, 1x, i4, 1p, 2(2x, d7.1), 1p, 2(1x, d10.3))
 
     return
