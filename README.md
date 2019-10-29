@@ -1,1 +1,1 @@
-# ru.azarnov.lbfgsb
+# lbfgsb
