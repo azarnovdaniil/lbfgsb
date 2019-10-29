@@ -43,6 +43,7 @@ public final class Linpack {
                 return false;
             }
         }
+        // TODO: 29.10.2019 add method body
 
         return true;
     }
@@ -57,7 +58,73 @@ public final class Linpack {
                 return false;
             }
         }
+        // TODO: 29.10.2019 add method body
 
+        return true;
+    }
+
+    /**
+     * dpofa factors a double precision symmetric positive definite
+     * matrix.
+     * <p>
+     * dpofa is usually called by dpoco, but it can be called
+     * directly with a saving in time if  rcond  is not needed.
+     * (time for dpoco) = (1 + 18/n)*(time for dpofa) .
+     * <p>
+     * on entry
+     * <p>
+     * a       double precision(lda, n)
+     * the symmetric matrix to be factored.  only the
+     * diagonal and upper triangle are used.
+     * <p>
+     * lda     integer
+     * the leading dimension of the array  a .
+     * <p>
+     * n       integer
+     * the order of the matrix  a .
+     * <p>
+     * on return
+     * <p>
+     * a       an upper triangular matrix  r  so that  a = trans(r)*r
+     * where  trans(r)  is the transpose.
+     * the strict lower triangle is unaltered.
+     * if  info .ne. 0 , the factorization is not complete.
+     * <p>
+     * info    integer
+     * = 0  for normal return.
+     * = k  signals an error condition.  the leading minor
+     * of order  k  is not positive definite.
+     * <p>
+     * linpack.  this version dated 08/14/78 .
+     * cleve moler, university of new mexico, argonne national lab.
+     * <p>
+     * subroutines and functions
+     * <p>
+     * blas ddot
+     * fortran sqrt
+     * <p>
+     * internal variables
+     */
+    public static boolean dpofa(double[][] a, int lda, int n) {
+
+        double s = 0.0;
+        int jm1;
+
+        for (int i = 0; i < n; i++) {
+            jm1 = i - 1;
+            if (jm1 < 0) {
+                s = a[i][i] - s;
+                if (s <= 0.0) {
+                    return false;
+                } else {
+                    a[i][i] = Math.sqrt(s);
+                }
+            } else {
+                for (int j = 0; j < jm1; j++) {
+                    // TODO: 29.10.2019 add method body
+                }
+            }
+        }
         return true;
     }
 
