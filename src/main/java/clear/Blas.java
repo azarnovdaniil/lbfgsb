@@ -20,7 +20,8 @@ public final class Blas {
 
         // TODO: 29.10.2019 Use Arrays.fill after check all usages in fortran code.
         for (int i = 0; i < number; i++) {
-            vector[i] = alpha * vector[i];
+            int n = i % vector.length;
+            vector[n] = alpha * vector[n];
         }
     }
 
@@ -68,8 +69,8 @@ public final class Blas {
      * Rewrote fortran {@code subroutine daxpy(n, da, dx, incx, dy, incy)}
      * with conditions only for lbfgsb, without incx, incy because in all usage incx, incy == 1
      *
-     * @param number is number of elements in input vector.
-     * @param alpha  is specifies the scalar alpha.
+     * @param number  is number of elements in input vector.
+     * @param alpha   is specifies the scalar alpha.
      * @param xVector is x vector
      * @param yVector is y vector
      */
