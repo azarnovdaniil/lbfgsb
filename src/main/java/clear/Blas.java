@@ -16,12 +16,12 @@ public final class Blas {
      * @param vector is vector.
      */
     public static void scale(final int number, final double alpha, final double[] vector) {
+        // In fortran code vector is assumed-size array
         if (number <= 0) return;
 
         // TODO: 29.10.2019 Use Arrays.fill after check all usages in fortran code.
         for (int i = 0; i < number; i++) {
-            int n = i % vector.length;
-            vector[n] = alpha * vector[n];
+            vector[i] = alpha * vector[i];
         }
     }
 
@@ -37,6 +37,7 @@ public final class Blas {
      * @return dot product of two vectors.
      */
     public static double dot(final int number, final double[] xVector, final double[] yVector) {
+        // In fortran code xVector and yVector is assumed-size array
         if (number <= 0) {
             return 0.0;
         }
@@ -58,6 +59,7 @@ public final class Blas {
      * @param yVector is y vector
      */
     public static void copy(final int number, final double[] xVector, final double[] yVector) {
+        // In fortran code xVector and yVector is assumed-size array
         if (number <= 0) return;
 
         System.arraycopy(xVector, 0, yVector, 0, number);
@@ -75,6 +77,7 @@ public final class Blas {
      * @param yVector is y vector
      */
     public static void axpy(final int number, final double alpha, final double[] xVector, final double[] yVector) {
+        // In fortran code xVector and yVector is assumed-size array
         if (number <= 0) return;
 
         for (int i = 0; i < number; i++) {
